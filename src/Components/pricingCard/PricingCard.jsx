@@ -7,7 +7,7 @@ const PricingCard = ({ pricing }) => {
     const { name, price, description, features } = pricing;
 
     return (
-        <div className='flex flex-col border border-indigo-700 bg-violet-800 rounded-2xl p-5'>
+        <div className='flex flex-col border border-indigo-700 bg-violet-800 rounded-2xl p-5 w-5/6 mx-auto'>
 
             <div >
                 <h1 className='text-6xl'>{name}</h1>
