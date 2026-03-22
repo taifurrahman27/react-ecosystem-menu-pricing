@@ -15,6 +15,11 @@ function App() {
         <DaisyNav>
         </DaisyNav>
       </header>
+
+      <main>
+
+      </main>
+
     </>
   )
 }
