@@ -18,13 +18,13 @@ const NavBar = () => {
 
     const [open, setOpen] = useState(false);
     return (
-        <nav className='flex justify-between mx-10'>
+        <nav className='flex justify-between mx-10 mt-5'>
 
             <span className='flex items-center'>
                 <div className='cursor-pointer' onClick={() => setOpen(!open)}>
                     {open ? <X className='md:hidden'></X> : <Menu className='md:hidden'>
                     </Menu>}
-                    <ul className={`md:hidden absolute duration-500 ${open ? 'top-8' : '-top-30'} bg-amber-100 z-10 text-black`}>{links}</ul>
+                    <ul className={`md:hidden absolute duration-500 ${open ? 'top-14' : '-top-30'} bg-amber-100 z-10 text-black`}>{links}</ul>
                 </div>
                 <a className="btn btn-ghost text-xl">My Navbar</a>
 
