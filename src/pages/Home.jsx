@@ -1,81 +1,83 @@
 import React, { useState } from 'react';
-import { Clock, MapPin, Flame } from 'lucide-react';
+import { Clock, MapPin, Dumbbell, Flame } from 'lucide-react';
 
-const menuData = {
-    Starters: [
-        { name: 'Charred Octopus', desc: 'Smoked paprika, fingerling potato, salsa verde', price: 16, signature: true },
-        { name: 'Burrata & Fig', desc: 'Aged balsamic, toasted walnut, sourdough crisp', price: 14 },
-        { name: 'Roasted Beet Salad', desc: 'Whipped goat cheese, candied pecan, citrus vinaigrette', price: 12 },
-        { name: 'Wild Mushroom Soup', desc: 'Truffle oil, chive crème fraîche', price: 11 },
+const classData = {
+    Strength: [
+        { name: 'Barbell Fundamentals', desc: 'Squat, bench, deadlift technique with a coach on the platform', duration: '60 min', level: 'All levels', signature: true },
+        { name: 'Powerbuilding', desc: 'Heavy compound lifts followed by accessory volume work', duration: '75 min', level: 'Intermediate' },
+        { name: 'Olympic Lifting', desc: 'Snatch and clean & jerk technique on dedicated platforms', duration: '60 min', level: 'Advanced' },
     ],
-    Mains: [
-        { name: 'Braised Short Rib', desc: 'Root vegetable mash, red wine jus', price: 32, signature: true },
-        { name: 'Pan-Seared Halibut', desc: 'Saffron risotto, charred lemon, herb oil', price: 29 },
-        { name: 'Wood-Fired Chicken', desc: 'Preserved lemon, olives, roasted fingerlings', price: 24 },
-        { name: 'Wild Mushroom Risotto', desc: 'Parmesan, black truffle, crispy sage', price: 22 },
+    Conditioning: [
+        { name: 'HIIT Circuit', desc: 'Kettlebells, sleds, and rowers in timed rotating stations', duration: '45 min', level: 'All levels', signature: true },
+        { name: 'Metcon', desc: 'Mixed functional movements scored against the clock', duration: '50 min', level: 'Intermediate' },
+        { name: 'Sled & Ropes', desc: 'Pure output work \u2014 pushes, pulls, battle ropes, sprints', duration: '40 min', level: 'All levels' },
     ],
-    Desserts: [
-        { name: 'Basque Cheesecake', desc: 'Burnt caramel, sea salt', price: 10, signature: true },
-        { name: 'Dark Chocolate Torte', desc: 'Espresso cream, candied hazelnut', price: 10 },
-        { name: 'Citrus Panna Cotta', desc: 'Blood orange, mint, pistachio crumble', price: 9 },
+    Boxing: [
+        { name: 'Bag Fundamentals', desc: 'Stance, footwork, and combinations on heavy bags', duration: '50 min', level: 'Beginner', signature: true },
+        { name: 'Pad Work', desc: 'Partner-based mitt rounds focused on timing and power', duration: '50 min', level: 'Intermediate' },
+        { name: 'Sparring Prep', desc: 'Controlled rounds for members training toward competition', duration: '60 min', level: 'Advanced' },
     ],
-    Drinks: [
-        { name: 'House Old Fashioned', desc: 'Bourbon, smoked cherry, orange oil', price: 14 },
-        { name: 'Cellar Reserve Red', desc: 'Glass / bottle — ask your server for tonight\u2019s pour', price: 15 },
-        { name: 'Rosemary Spritz', desc: 'Gin, elderflower, soda, rosemary smoke', price: 13 },
+    Mobility: [
+        { name: 'Deep Stretch', desc: 'Guided long-hold stretching to restore range of motion', duration: '45 min', level: 'All levels' },
+        { name: 'Foundations Yoga', desc: 'Breath-led flow built for lifters and runners', duration: '50 min', level: 'All levels', signature: true },
+        { name: 'Recovery Flow', desc: 'Light movement and mobility work for rest days', duration: '30 min', level: 'All levels' },
     ],
 };
 
-const categories = Object.keys(menuData);
+const categories = Object.keys(classData);
 
 const HomePage = () => {
     const [active, setActive] = useState(categories[0]);
 
     return (
-        <div className="bg-[#FAF6EE] text-[#2B241C]">
+        <div className="bg-white text-[#1C1D1F]">
 
             {/* Hero */}
-            <section className="bg-[#1F1B16] text-[#FAF6EE]">
+            <section className="bg-[#1C1D1F] text-white">
                 <div className="mx-10 py-24 md:py-32 max-w-2xl">
-                    <p className="text-[#C9A44D] font-medium mb-4">Est. 2014, downtown kitchen</p>
-                    <h1 className="font-serif text-5xl md:text-6xl leading-tight mb-6">
-                        Slow food, cooked over open flame.
+                    <p className="text-[#2F6FED] font-medium mb-4">Open since 2016 in the Iron District</p>
+                    <h1 className="font-extrabold text-5xl md:text-6xl leading-tight mb-6 tracking-tight">
+                        Strength is built here, not found.
                     </h1>
-                    <p className="text-lg text-[#D8D0C3] mb-8 max-w-md">
-                        A seasonal menu built around the wood-fired hearth — shared plates,
-                        honest ingredients, and a wine list that changes with the harvest.
+                    <p className="text-lg text-[#B7B8BB] mb-8 max-w-md">
+                        Barbell rooms, conditioning circuits, and a boxing floor &mdash;
+                        coached classes for every level, seven days a week.
                     </p>
                     <div className="flex flex-wrap gap-4">
-                        <a href="#menu" className="btn bg-[#C9A44D] hover:bg-[#B8862B] text-[#1F1B16] border-none">
-                            View the menu
+                        <a href="#classes" className="btn rounded-sm bg-[#2F6FED] hover:bg-[#2559C7] text-white border-none">
+                            View classes
                         </a>
-                        <a href="#reserve" className="btn btn-outline border-[#D8D0C3] text-[#FAF6EE] hover:bg-[#2B241C]">
-                            Reserve a table
+                        <a href="#join" className="btn rounded-sm btn-outline border-[#4A4B4F] text-white hover:bg-[#2A2B2E]">
+                            Join now
                         </a>
                     </div>
                 </div>
             </section>
 
             {/* Info strip */}
-            <section className="border-b border-[#E5DCC8]">
+            <section className="border-b border-[#E4E5E7]">
                 <div className="mx-10 py-6 flex flex-wrap gap-8 text-sm">
                     <span className="flex items-center gap-2">
-                        <Clock size={18} className="text-[#B8862B]" />
-                        Tue&ndash;Sun, 5:30pm&ndash;11pm
+                        <Clock size={18} className="text-[#2F6FED]" />
+                        Mon&ndash;Fri 5am&ndash;10pm, Sat&ndash;Sun 7am&ndash;8pm
                     </span>
                     <span className="flex items-center gap-2">
-                        <MapPin size={18} className="text-[#B8862B]" />
-                        214 Elm Street, Downtown
+                        <MapPin size={18} className="text-[#2F6FED]" />
+                        88 Foundry Road, Iron District
+                    </span>
+                    <span className="flex items-center gap-2">
+                        <Dumbbell size={18} className="text-[#2F6FED]" />
+                        24/7 access for full members
                     </span>
                 </div>
             </section>
 
-            {/* Menu */}
-            <section id="menu" className="mx-10 py-20">
-                <h2 className="font-serif text-4xl mb-2">Tonight's menu</h2>
-                <p className="text-[#6B6152] mb-10 max-w-lg">
-                    Everything is made to share. Ask your server about pairing with
-                    something from the cellar list.
+            {/* Classes */}
+            <section id="classes" className="mx-10 py-20">
+                <h2 className="font-extrabold text-4xl mb-2 tracking-tight">This week's classes</h2>
+                <p className="text-[#5C5D60] mb-10 max-w-lg">
+                    Every class is capped and coached. Reserve a spot through the app up
+                    to 24 hours ahead.
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-10">
@@ -83,9 +85,9 @@ const HomePage = () => {
                         <button
                             key={cat}
                             onClick={() => setActive(cat)}
-                            className={`btn btn-sm ${active === cat
-                                ? 'bg-[#1F1B16] text-[#FAF6EE] border-none'
-                                : 'btn-ghost border border-[#E5DCC8]'
+                            className={`btn btn-sm rounded-sm ${active === cat
+                                ? 'bg-[#1C1D1F] text-white border-none'
+                                : 'btn-ghost border border-[#E4E5E7]'
                                 }`}
                         >
                             {cat}
@@ -94,43 +96,44 @@ const HomePage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-                    {menuData[active].map((item) => (
-                        <div key={item.name} className="flex justify-between gap-4 border-b border-[#E5DCC8] pb-4">
+                    {classData[active].map((item) => (
+                        <div key={item.name} className="flex justify-between gap-4 border-b border-[#E4E5E7] pb-4">
                             <div>
                                 <div className="flex items-center gap-2">
-                                    <h3 className="font-serif text-xl">{item.name}</h3>
+                                    <h3 className="font-bold text-xl">{item.name}</h3>
                                     {item.signature && (
-                                        <Flame size={15} className="text-[#B8862B]" />
+                                        <Flame size={15} className="text-[#F5A623]" />
                                     )}
                                 </div>
-                                <p className="text-sm text-[#6B6152] mt-1">{item.desc}</p>
+                                <p className="text-sm text-[#5C5D60] mt-1">{item.desc}</p>
+                                <p className="text-xs text-[#8C8D90] mt-1">{item.level}</p>
                             </div>
-                            <span className="font-serif text-lg whitespace-nowrap">${item.price}</span>
+                            <span className="font-bold text-lg whitespace-nowrap">{item.duration}</span>
                         </div>
                     ))}
                 </div>
             </section>
 
             {/* About */}
-            <section className="bg-[#F1EADA]">
+            <section className="bg-[#F2F3F5]">
                 <div className="mx-10 py-20 grid md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 className="font-serif text-4xl mb-4">Cooked the slow way</h2>
-                        <p className="text-[#6B6152] max-w-md">
-                            Our hearth runs on oak and fruitwood from local orchards. Nothing
-                            leaves the kitchen that hasn't spent time over the fire &mdash; it's
-                            slower, but it's the only way we know how to cook.
+                        <h2 className="font-extrabold text-4xl mb-4 tracking-tight">Built for real progress</h2>
+                        <p className="text-[#5C5D60] max-w-md">
+                            No mirrors for the sake of mirrors. Every rack, platform, and
+                            circuit is here because a coach asked for it &mdash; this gym is
+                            built around programming, not decoration.
                         </p>
                     </div>
-                    <div className="aspect-4/3 rounded-lg bg-[#1F1B16]" />
+                    <div className="aspect-4/3 rounded-sm bg-[#1C1D1F]" />
                 </div>
             </section>
 
-            {/* Reserve CTA */}
-            <section id="reserve" className="mx-10 py-20 text-center">
-                <h2 className="font-serif text-3xl mb-4">Join us tonight</h2>
-                <p className="text-[#6B6152] mb-8">Walk-ins welcome. Groups of 6+, please call ahead.</p>
-                <a href="tel:+10000000000" className="btn bg-[#1F1B16] text-[#FAF6EE] hover:bg-[#2B241C] border-none">
+            {/* Join CTA */}
+            <section id="join" className="mx-10 py-20 text-center">
+                <h2 className="font-extrabold text-3xl mb-4 tracking-tight">Your first class is free</h2>
+                <p className="text-[#5C5D60] mb-8">No contract required. Bring your own shoes and a water bottle.</p>
+                <a href="tel:+10000000000" className="btn rounded-sm bg-[#1C1D1F] text-white hover:bg-[#2A2B2E] border-none">
                     (000) 000-0000
                 </a>
             </section>
