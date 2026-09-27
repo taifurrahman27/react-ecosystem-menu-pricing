@@ -122,7 +122,7 @@ const HomePage = () => {
                             slower, but it's the only way we know how to cook.
                         </p>
                     </div>
-                    <div className="aspect-[4/3] rounded-lg bg-[#1F1B16]" />
+                    <div className="aspect-4/3 rounded-lg bg-[#1F1B16]" />
                 </div>
             </section>
 
