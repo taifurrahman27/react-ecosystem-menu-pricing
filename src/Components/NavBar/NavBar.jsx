@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import Link from './Link';
 import { Menu, X } from 'lucide-react';
 
@@ -10,51 +11,50 @@ const navData = [
     { id: 5, name: "Contact", url: "/contact" }
 ];
 
-
 const NavBar = () => {
-
-    const links = navData.map(route => <Link key={route.id} route={route}>
-    </Link>)
-
     const [open, setOpen] = useState(false);
+
+    const closeMenu = () => setOpen(false);
+
+    const links = navData.map(route => (
+        <Link key={route.id} route={route} onClick={closeMenu} />
+    ));
+
     return (
-        <nav className='flex justify-between mx-10 mt-5'>
+        <nav className="relative flex items-center justify-between mx-10 mt-5">
 
-            <span className='flex items-center'>
-                <div className='cursor-pointer' onClick={() => setOpen(!open)}>
-                    {open ? <X className='md:hidden'></X> : <Menu className='md:hidden'>
-                    </Menu>}
-                    <ul className={`md:hidden absolute duration-500 ${open ? 'top-14' : '-top-30'} bg-amber-100 z-10 text-black`}>{links}</ul>
-                </div>
-                <a className="btn btn-ghost text-xl">My Navbar</a>
+            <span className="flex items-center gap-2">
+                <button
+                    type="button"
+                    className="md:hidden cursor-pointer"
+                    aria-label={open ? 'Close menu' : 'Open menu'}
+                    aria-expanded={open}
+                    onClick={() => setOpen(!open)}
+                >
+                    {open ? <X /> : <Menu />}
+                </button>
 
+                <RouterLink to="/" className="btn btn-ghost text-xl">My Navbar</RouterLink>
             </span>
 
-            <ul className='hidden md:flex'>
-                {
-                    links
-                }
+            {/* Desktop links */}
+            <ul className="hidden md:flex items-center gap-6">
+                {links}
             </ul>
 
+            {/* Mobile dropdown */}
+            <ul
+                className={`md:hidden absolute left-0 top-full w-56 mt-2 flex flex-col gap-1 rounded-box bg-amber-100 text-black shadow-lg z-10 p-3 origin-top transition-all duration-300 ${open
+                        ? 'opacity-100 scale-y-100'
+                        : 'opacity-0 scale-y-0 pointer-events-none'
+                    }`}
+            >
+                {links}
+            </ul>
 
-            {/* <ul className='flex'>
-                {
-                    navData.map(route => <li className='mr-10'>
-                        <a href={route.path}>{route.name}</a>
-                        </li>)
-                }
-            </ul> */}
+            <button className="btn btn-soft">Sign In</button>
 
-
-            {/* <ul className='flex'>
-                <li className='mr-10'><a href='/home'>Home</a></li>
-                <li className='mr-10'><a href='/about'>About</a></li>
-                <li className='mr-10'><a href='/blog'>Blog</a></li>
-            </ul> */}
-
-            <button className='btn btn-soft'>Sign In</button>
-
-        </nav >
+        </nav>
     );
 };
 
